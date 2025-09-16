@@ -58,43 +58,33 @@ function createProjectCard(project) {
 }
 
 let remainingProjectsLoaded = false;
-const PROJECTS_PER_ROW = 3; 
 
-function loadFirstRow() {
+function loadFirstProject() {
     const recentProjectsContainer = document.getElementById('recent-projects');
     if (projects.length > 0) {
-        const firstRowProjects = projects.slice(0, PROJECTS_PER_ROW);
-        const projectCards = firstRowProjects
-            .map(project => createProjectCard(project))
-            .join('');
-        recentProjectsContainer.innerHTML = projectCards;
+        const firstProject = projects[0];
+        recentProjectsContainer.innerHTML = createProjectCard(firstProject);
     }
 }
 
-function loadAllRemainingProjects() {
-    if (remainingProjectsLoaded) return; // Prevent loading multiple times
+function loadRemainingProjects() {
+    if (remainingProjectsLoaded) return; 
 
-    const projectsContainer = document.querySelector('#projects .row:not(#recent-projects)');
-    const remainingProjects = projects.slice(PROJECTS_PER_ROW); // Get all projects after the first row
+    const recentProjectsContainer = document.getElementById('recent-projects');
+    const remainingProjects = projects.slice(1); 
     
-    if (remainingProjects.length > 0) {
-        const projectCards = remainingProjects
-            .map(project => createProjectCard(project))
-            .join('');
-        
-        projectsContainer.innerHTML += projectCards;
-    }
-
+    const projectCards = remainingProjects
+        .map(project => createProjectCard(project))
+        .join('');
+    
+    recentProjectsContainer.innerHTML += projectCards;
+    
     document.getElementById('load-more').style.display = 'none';
     remainingProjectsLoaded = true;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadFirstRow();
-    if (projects.length > PROJECTS_PER_ROW) {
-        document.getElementById('load-more').style.display = 'block';
-    } else {
-        document.getElementById('load-more').style.display = 'none';
-    }
-    document.getElementById('load-more').addEventListener('click', loadAllRemainingProjects);
+    loadFirstProject();
+    document.getElementById('load-more').style.display = projects.length > 1 ? 'block' : 'none';
+    document.getElementById('load-more').addEventListener('click', loadRemainingProjects);
 });
