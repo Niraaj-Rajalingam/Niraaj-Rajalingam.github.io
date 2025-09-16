@@ -19,6 +19,16 @@ const projects = [
             "Used YOLOv8 to detect and classify parking signs in real-time.",
             "Used Tesseract for OCR to extract text from parking signs."
         ]
+    },
+    {
+        title: "TermTalk",
+        image: "/assets/img/terminal.png",
+        description: "Developed a terminal-based chat application using C.",
+        tools: "C, C++, Socket Programming",
+        accomplishments: [
+            "Implemented a client-server architecture for real-time communication.",
+            "Utilized multithreading to handle multiple clients simultaneously."
+        ]
     }
 ];
 
@@ -47,7 +57,9 @@ function createProjectCard(project) {
     `;
 }
 
-// Loads most recent project
+let remainingProjectsLoaded = false;
+
+// Function to load most recent project
 function loadRecentProject() {
     const recentProjectsContainer = document.getElementById('recent-projects');
     if (projects.length > 0) {
@@ -56,19 +68,26 @@ function loadRecentProject() {
     }
 }
 
-// Loads remaining projects
-function loadRemainingProjects() {
+// Function to load all remaining projects
+function loadAllRemainingProjects() {
+    if (remainingProjectsLoaded) return; // Prevent loading multiple times
+
     const projectsContainer = document.querySelector('#projects .row:not(#recent-projects)');
-    const remainingProjects = projects.slice(1);
+    const remainingProjects = projects.slice(1); // Get all projects except the first one
     
-    remainingProjects.forEach(project => {
-        projectsContainer.innerHTML += createProjectCard(project);
-    });
+    const projectCards = remainingProjects
+        .map(project => createProjectCard(project))
+        .join('');
     
+    projectsContainer.innerHTML += projectCards;
+    
+    // Hide the load more button and mark as loaded
     document.getElementById('load-more').style.display = 'none';
+    remainingProjectsLoaded = true;
 }
 
+// Initialize projects when the document is ready
 document.addEventListener('DOMContentLoaded', () => {
     loadRecentProject();
-    document.getElementById('load-more').addEventListener('click', loadRemainingProjects);
+    document.getElementById('load-more').addEventListener('click', loadAllRemainingProjects);
 });
