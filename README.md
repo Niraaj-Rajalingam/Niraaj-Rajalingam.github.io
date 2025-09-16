@@ -21,5 +21,5 @@ Maintained by Niraaj Rajalingam.
 ![Activity 4](assets/img/Lab1-img7.png)
 
 ## Activity 5
-![Activity 4](assets/img/Lab1-img7.png)
-![Activity 4](assets/img/Lab1-img8.png)
+![Activity 5](assets/img/Lab1-img8.png)
+![Activity 5](assets/img/Lab1-img9.png)
