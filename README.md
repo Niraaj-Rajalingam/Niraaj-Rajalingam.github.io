@@ -11,3 +11,7 @@ Maintained by Niraaj Rajalingam.
 ## Activity 2
 ![Activity 2](assets/img/Lab1-img2.png)
 ![Activity 2](assets/img/Lab1-img3.png)
+
+## Activity 3 
+![Activity 3](assets/img/Lab1-img4.png)
+![Activity 3](assets/img/Lab1-img5.png)
