@@ -303,7 +303,7 @@
         <h3 class="page-title white-text teal">Places Travelled</h3>
         <div class="container">
           <p>Here are some of the places I have visited so far:</p>
-          <div style="width: 100%; height: 400px;">
+          <div style="width: 100%; height: 600px;">
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=13IclCmL6lj__DN9TME6q6qU2k1JkPW4&ehbc=2E312F" width="640" height="480"></iframe>
           </div>
         </div>
@@ -401,61 +401,13 @@ systems, implementing caching strategies that improved performance and reduced d
     <section id="projects" class="section scrollspy">
       <h3 class="page-title white-text teal">Projects</h3>
       <div class="container">
+        <div id="recent-projects" class="row">
+          <h4 class="white-text">Recent Projects</h4>
+        </div>
         <div class="row">
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="TourGuidePro" src="/assets/img/tourguidepro.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">TourGuidePro<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Developed tourist mapping software with trip planning, route planning, and real-time location information.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> C++, OpenGL, OpenStreetMap, Open Data APIs, OOP, Git</li>
-                  <li>Implemented trip planning and route optimization algorithms.</li>
-                  <li>Utilized OSM database to construct the map and third party APIs to retrieve reviews, crime, and weather data.</li>
-                  <li>Optimized performance through multithreading, asynchronous loading, caching, and tile-based loading techniques.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="quiz app" src="/assets/img/parksense.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">ParkSense<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Developed a deep learning-based program to extract, interpret, and display parking sign information, achieving 72%
-accuracy at a distance of 7 meters in complex scenarios with multiple signs in the frame.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, PyTorch, Numpy, OpenCV, YOLOv8, Matplotlib, OpenAI API</li>
-                  <li>Used YOLOv8 to detect and classify parking signs in real-time.</li>
-                  <li>Used Tesseract for OCR to extract text from parking signs.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        </div>
+        <div class="row center-align">
+          <button id="load-more" class="waves-effect waves-light btn-large teal">Load More Projects</button>
         </div>
       </div>
     </section>
@@ -649,6 +601,9 @@ accuracy at a distance of 7 meters in complex scenarios with multiple signs in t
 
   <!-- Materialize - Compiled and minified JavaScript-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+  
+  <!-- Projects JavaScript -->
+  <script src="/assets/js/projects.js"></script>
   <script>
     // Materialize - Initializers
     $(document).ready(function () {
