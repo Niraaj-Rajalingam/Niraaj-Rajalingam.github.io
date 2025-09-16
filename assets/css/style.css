@@ -344,7 +344,7 @@ h3 {
   /* font-weight: 400; */
   line-height: 150%;
   /* padding: 0 0px; */
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px rgba(181, 12, 12, 0.5);
 }
 
 #intro.section .underline {
@@ -356,7 +356,7 @@ h3 {
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(30, 255, 0, 0.4);
   height: 100%;
   left: 0;
   position: absolute;
