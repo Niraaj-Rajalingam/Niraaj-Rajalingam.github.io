@@ -58,36 +58,43 @@ function createProjectCard(project) {
 }
 
 let remainingProjectsLoaded = false;
+const PROJECTS_PER_ROW = 3; 
 
-// Function to load most recent project
-function loadRecentProject() {
+function loadFirstRow() {
     const recentProjectsContainer = document.getElementById('recent-projects');
     if (projects.length > 0) {
-        const mostRecent = projects[0];
-        recentProjectsContainer.innerHTML = createProjectCard(mostRecent);
+        const firstRowProjects = projects.slice(0, PROJECTS_PER_ROW);
+        const projectCards = firstRowProjects
+            .map(project => createProjectCard(project))
+            .join('');
+        recentProjectsContainer.innerHTML = projectCards;
     }
 }
 
-// Function to load all remaining projects
 function loadAllRemainingProjects() {
     if (remainingProjectsLoaded) return; // Prevent loading multiple times
 
     const projectsContainer = document.querySelector('#projects .row:not(#recent-projects)');
-    const remainingProjects = projects.slice(1); // Get all projects except the first one
+    const remainingProjects = projects.slice(PROJECTS_PER_ROW); // Get all projects after the first row
     
-    const projectCards = remainingProjects
-        .map(project => createProjectCard(project))
-        .join('');
-    
-    projectsContainer.innerHTML += projectCards;
-    
-    // Hide the load more button and mark as loaded
+    if (remainingProjects.length > 0) {
+        const projectCards = remainingProjects
+            .map(project => createProjectCard(project))
+            .join('');
+        
+        projectsContainer.innerHTML += projectCards;
+    }
+
     document.getElementById('load-more').style.display = 'none';
     remainingProjectsLoaded = true;
 }
 
-// Initialize projects when the document is ready
 document.addEventListener('DOMContentLoaded', () => {
-    loadRecentProject();
+    loadFirstRow();
+    if (projects.length > PROJECTS_PER_ROW) {
+        document.getElementById('load-more').style.display = 'block';
+    } else {
+        document.getElementById('load-more').style.display = 'none';
+    }
     document.getElementById('load-more').addEventListener('click', loadAllRemainingProjects);
 });
